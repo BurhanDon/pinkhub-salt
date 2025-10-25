@@ -1,13 +1,22 @@
+/** @type {import('next').NextConfig} */
 const nextConfig = {
   compiler: {
     react: {
-      // Enables the experimental React Compiler using the correct structure
+      // Enables the experimental React Compiler
       experimental: true,
     },
   },
-  // If you have other configurations, add them here
-  // e.g., experimental: { serverActions: true, },
+  images: {
+    // Allow loading from external placeholder for now
+    remotePatterns: [
+      {
+        protocol: "https",
+        hostname: "placehold.co",
+      },
+    ],
+  },
+  // Optional example for other experimental features
+  // experimental: { serverActions: true },
 };
 
-// Use export default for .mjs files
 export default nextConfig;

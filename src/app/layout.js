@@ -6,7 +6,7 @@ import Footer from "../components/Footer"; // Import the Footer
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata = {
-  title: "Raqeeb Himalayan Salt - Manufacturer & Exporter",
+  title: "Himalayan Salt - Manufacturer & Exporter",
   description: "Premium Himalayan Pink Salt products for B2B and wholesale.",
 };
 
@@ -14,7 +14,7 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body
-        className={`${inter.className} bg-white text-gray-800 flex flex-col min-h-screen`}
+        className={`${inter.className} bg-gray-100 text-gray-800 flex flex-col min-h-screen`}
       >
         {" "}
         {/* Added flex classes */}

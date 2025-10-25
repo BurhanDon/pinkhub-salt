@@ -43,7 +43,7 @@ const WelcomeSnippet = () => {
               viewport={{ once: true }}
               className="text-3xl lg:text-4xl font-bold text-gray-800 mb-3"
             >
-              Welcome to Raqeeb Salt
+              Welcome to Salt
             </motion.h2>
 
             {/* Small HR */}
