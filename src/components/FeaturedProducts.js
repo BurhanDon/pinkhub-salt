@@ -1,3 +1,4 @@
+// src/components/FeaturedProducts.js
 "use client"; // For Swiper
 
 import React from "react";
@@ -10,14 +11,23 @@ import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
 
-// Import data and the card component
-import { getFeaturedProducts } from "@/data/siteData";
+// --- DATA SOURCE FIX ---
+// Import directly from products.json and filter here
+import allProducts from "@/data/products.json";
 import ProductCard from "./ProductCard";
+
+// Helper function to get ONLY featured products
+// You can customize this logic (e.g., take first 10, or add a "featured" flag to your JSON)
+const getFeaturedProducts = () => {
+  // For now, let's just show the first 10 products.
+  // We can add a "featured: true" flag to products.json later if you want.
+  return allProducts.slice(0, 10);
+};
+// --- END DATA SOURCE FIX ---
 
 export default function FeaturedProducts() {
   const featuredProducts = getFeaturedProducts();
 
-  // Animation variants for the section header
   const headerVariants = {
     hidden: { opacity: 0, y: 20 },
     visible: { opacity: 1, y: 0, transition: { duration: 0.6 } },
@@ -25,12 +35,7 @@ export default function FeaturedProducts() {
 
   return (
     <section className="py-16 lg:py-24 bg-gray-50">
-      {" "}
-      {/* Matches Category background */}
       <div className="container mx-auto px-4 relative">
-        {" "}
-        {/* Added relative for positioning context */}
-        {/* Section Header */}
         <motion.div
           className="text-center mb-12"
           variants={headerVariants}
@@ -43,72 +48,42 @@ export default function FeaturedProducts() {
           </h2>
           <span className="block w-16 h-1 bg-primary mx-auto mb-4"></span>
           <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-            Explore a selection of our most popular Himalayan salt products,
-            favoured by clients worldwide.
+            Explore a selection of our most popular Himalayan salt products.
           </p>
         </motion.div>
-        {/* Product Carousel */}
+
         <Swiper
           modules={[Navigation, Pagination, Autoplay]}
-          spaceBetween={30} // Space between slides
-          slidesPerView={1} // Default for mobile
-          navigation // Show navigation arrows
-          pagination={{ clickable: true }} // Show pagination dots
+          spaceBetween={30}
+          slidesPerView={1}
+          navigation
+          pagination={{ clickable: true }}
           autoplay={{
             delay: 4000,
             disableOnInteraction: false,
           }}
           breakpoints={{
-            // Responsive settings
-            640: { slidesPerView: 2 }, // sm
-            768: { slidesPerView: 3 }, // md
-            1024: { slidesPerView: 4 }, // lg
+            640: { slidesPerView: 2 },
+            768: { slidesPerView: 3 },
+            1024: { slidesPerView: 4 },
           }}
-          className="pb-16" // Increased padding bottom for pagination dots
+          className="pb-16" // Increased padding for dots
         >
           {featuredProducts.map((product) => (
             <SwiperSlide key={product.id} className="h-auto pb-4">
-              {" "}
-              {/* Ensure slides have height for shadow */}
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5 }}
-                viewport={{ once: true, amount: 0.2 }} // Trigger slightly earlier
-                className="h-full" // Ensure motion div takes full height
+                viewport={{ once: true, amount: 0.2 }}
+                className="h-full"
               >
                 <ProductCard product={product} />
               </motion.div>
             </SwiperSlide>
           ))}
         </Swiper>
-        {/* Custom Swiper Styles */}
-        <style jsx global>{`
-          .swiper-button-next,
-          .swiper-button-prev {
-            color: #e6afa2 !important; /* Use your primary color */
-          }
-          .swiper-pagination-bullet-active {
-            background-color: #e6afa2 !important; /* Use your primary color */
-          }
-          /* Add margin-top to push pagination down */
-          .swiper-pagination {
-            bottom: 10px !important; /* Adjust default Swiper bottom value */
-            margin-top: 20px !important; /* Add space above dots */
-          }
-          .swiper-button-next {
-            right: 0;
-          }
-          .swiper-button-prev {
-            left: 0;
-          }
-          @media (max-width: 640px) {
-            .swiper-button-next,
-            .swiper-button-prev {
-              display: none;
-            } /* Hide on mobile */
-          }
-        `}</style>
+        {/* --- STYLE BLOCK REMOVED to fix hydration error --- */}
       </div>
     </section>
   );

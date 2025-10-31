@@ -1,13 +1,11 @@
+// next.config.mjs
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  compiler: {
-    react: {
-      // Enables the experimental React Compiler
-      experimental: true,
-    },
-  },
+  // This is the correct flag for your version
+  reactCompiler: true, 
+
   images: {
-    // Allow loading from external placeholder for now
+    // This part is correct and we will keep it
     remotePatterns: [
       {
         protocol: "https",
@@ -15,8 +13,6 @@ const nextConfig = {
       },
     ],
   },
-  // Optional example for other experimental features
-  // experimental: { serverActions: true },
 };
 
 export default nextConfig;

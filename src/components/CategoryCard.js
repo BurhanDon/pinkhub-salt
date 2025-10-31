@@ -1,3 +1,4 @@
+// src/components/CategoryCard.js
 "use client";
 
 import React from "react";
@@ -18,27 +19,21 @@ export default function CategoryCard({ category, index }) {
       viewport={{ once: true }}
     >
       <Link href={categoryHref} className="block">
-        {/* Background Image */}
         <Image
           src={
-            category.image ||
-            `https://placehold.co/400x400/E6AFA2/FFFFFF?text=${encodeURIComponent(
-              category.title
-            )}`
+            category.image || `/images/Category-Card.png` // Use our standard placeholder
           }
-          alt={category.title}
+          alt={category.title} // category.title is correct
           width={400}
           height={400}
           className="w-full h-64 object-cover transform transition-transform duration-500 group-hover:scale-110"
         />
 
-        {/* --- CHANGE START --- */}
-        {/* Gradient Overlay for Static Text Legibility */}
+        {/* Gradient Overlay */}
         <div
           className="absolute bottom-0 left-0 right-0 h-1/2 bg-gradient-to-t from-black/60 to-transparent pointer-events-none transition-opacity duration-500 group-hover:opacity-0"
           aria-hidden="true"
         ></div>
-        {/* --- CHANGE END --- */}
 
         {/* Hover Overlay */}
         <div className="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-50 transition-all duration-300"></div>
@@ -55,7 +50,6 @@ export default function CategoryCard({ category, index }) {
 
         {/* Static Title (Visible by default) */}
         <div className="absolute bottom-0 left-0 p-4 transform group-hover:translate-y-8 group-hover:opacity-0 transition-all duration-500 ease-in-out">
-          {/* Removed inline textShadow, gradient handles visibility */}
           <h3 className="text-xl font-bold text-white">{category.title}</h3>
         </div>
       </Link>

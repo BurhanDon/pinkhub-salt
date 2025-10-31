@@ -1,15 +1,42 @@
+// src/components/ProductCategories.js
 "use client"; // For framer-motion animations
 
 import React from "react";
 import Link from "next/link";
 import { motion } from "framer-motion";
 
-// Import the centralized data and the separate card component
-import { categories } from "@/data/siteData"; // Using alias '@/' for src folder
-import CategoryCard from "./CategoryCard"; // Import the new component
+// Import the NEW data source
+import allProducts from "@/data/products.json";
+import CategoryCard from "./CategoryCard"; // Import the reusable card
+
+// Helper to extract unique categories from products.json
+const getCategoriesFromProducts = (products) => {
+  const categoryMap = new Map();
+  if (!Array.isArray(products)) {
+    return [];
+  }
+  products.forEach((product) => {
+    if (product && product.category) {
+      if (!categoryMap.has(product.category)) {
+        categoryMap.set(product.category, {
+          id: product.category, // "industrial-salt"
+          title: product.category // "industrial-salt"
+            .replace(/-/g, " ")
+            .replace(/\b\w/g, (l) => l.toUpperCase()), // "Industrial Salt"
+          // Use the image of the *first product* in that category as the category image
+          image: product.image || "/images/Category-Card.png",
+        });
+      }
+    }
+  });
+  // Show the first 6 categories on the home page
+  return Array.from(categoryMap.values()).slice(0, 6);
+};
 
 // This is the main section component
 export default function ProductCategories() {
+  const categories = getCategoriesFromProducts(allProducts);
+
   return (
     <section className="py-16 lg:py-24 bg-gray-50">
       <div className="container mx-auto px-4">
@@ -31,7 +58,7 @@ export default function ProductCategories() {
           </p>
         </motion.div>
 
-        {/* Categories Grid - Now mapping over imported data and using CategoryCard */}
+        {/* Categories Grid - Now mapping over data from products.json */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {categories.map((category, index) => (
             <CategoryCard key={category.id} category={category} index={index} />

@@ -1,3 +1,40 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+/* src/app/globals.css */
+
+/* ... your existing @tailwind lines ... */
+
+/* --- ADD THIS CODE --- */
+
+/* Global Swiper Styles for HeroSlider and FeaturedProducts */
+.swiper-button-next,
+.swiper-button-prev {
+  color: #e6afa2 !important; /* Your 'primary' color */
+}
+
+.swiper-pagination-bullet-active {
+  background-color: #e6afa2 !important; /* Your 'primary' color */
+}
+
+/* Fix for FeaturedProducts pagination dots */
+.swiper-pagination {
+  bottom: 10px !important; /* Pushes dots down */
+}
+
+/* Position FeaturedProducts buttons */
+.swiper-button-next {
+  right: 0;
+}
+.swiper-button-prev {
+  left: 0;
+}
+
+@media (max-width: 640px) {
+  /* Hide nav arrows on mobile for a cleaner look */
+  .swiper-button-next,
+  .swiper-button-prev {
+    display: none;
+  }
+}

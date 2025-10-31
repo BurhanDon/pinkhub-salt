@@ -1,23 +1,21 @@
-"use client"; // This component uses client-side hooks and libraries
+// src/components/HeroSlider.js
+"use client";
 
 import React from "react";
 import Link from "next/link";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay, EffectFade, Navigation, Pagination } from "swiper/modules";
 
-// Import Swiper styles
 import "swiper/css";
 import "swiper/css/effect-fade";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
 
-// Slider data (replace with your actual images/videos later)
+// Slider data
 const slides = [
   {
-    type: "video", // Or 'image'
-    // You MUST host video files publicly (e.g., S3, Cloudinary, or even just in your /public folder)
-    // src: '/videos/salt-processing.mp4', // Example path in public folder
-    src: "/videos/hero-video.mp4", // Placeholder video
+    type: "video",
+    src: "/videos/hero-video.mp4", // Make sure this video exists in /public/videos/
     title: "Premium Himalayan Salt Exporter",
     subtext:
       "Sourced from the heart of Pakistan for global wholesale & private label.",
@@ -26,21 +24,21 @@ const slides = [
   },
   {
     type: "image",
-    src: "/images/himalayan-salt-bg.jpg", // Placeholder Image
+    src: "/images/himalayan-salt-bg.jpg", // Make sure this image exists in /public/images/
     alt: "Glowing Himalayan salt lamps",
     title: "Authentic Himalayan Salt Lamps & Decor",
     subtext: "Crafted to enhance wellness and ambiance.",
     buttonText: "View Decor Range",
-    buttonLink: "/products/salt-lamps-decor", // Example category link
+    buttonLink: "/products/home-decor",
   },
   {
     type: "image",
-    src: "images/himalayan-salt-bg.jpg", // Placeholder Image
+    src: "/images/himalayan-salt-bg.jpg", // Make sure this image exists in /public/images/
     alt: "Edible pink Himalayan salt",
     title: "Pure, Mineral-Rich Edible Salt",
     subtext: "Perfect for culinary excellence and health.",
     buttonText: "See Edible Salts",
-    buttonLink: "/products/edible-salt", // Example category link
+    buttonLink: "/products/edible-salt",
   },
 ];
 
@@ -54,23 +52,22 @@ export default function HeroSlider() {
         effect="fade"
         loop={true}
         autoplay={{
-          delay: 5000, // Change slide every 5 seconds
+          delay: 5000,
           disableOnInteraction: false,
         }}
         pagination={{ clickable: true }}
-        navigation={true} // Shows Previous/Next arrows
+        navigation={true}
         className="h-full w-full"
       >
         {slides.map((slide, index) => (
           <SwiperSlide key={index} className="relative h-full w-full">
-            {/* Background Image/Video */}
             {slide.type === "video" ? (
               <video
                 src={slide.src}
                 autoPlay
                 muted
                 loop
-                playsInline // Important for mobile playback
+                playsInline
                 className="absolute inset-0 w-full h-full object-cover -z-10"
               />
             ) : (
@@ -80,10 +77,7 @@ export default function HeroSlider() {
                 className="absolute inset-0 w-full h-full object-cover -z-10"
               />
             )}
-            {/* Overlay */}
             <div className="absolute inset-0 bg-black bg-opacity-40"></div>
-
-            {/* Content */}
             <div className="relative z-10 h-full flex flex-col justify-center items-center text-center text-white p-4">
               <h1 className="text-3xl md:text-5xl lg:text-6xl font-bold mb-4 animate__animated animate__fadeInDown">
                 {slide.title}
@@ -101,20 +95,7 @@ export default function HeroSlider() {
           </SwiperSlide>
         ))}
       </Swiper>
-      {/* Custom Swiper Styles (Optional: Add to globals.css if needed) */}
-      <style jsx global>{`
-        .swiper-button-next,
-        .swiper-button-prev {
-          color: #e6afa2 !important; /* Use your primary color */
-        }
-        .swiper-pagination-bullet-active {
-          background-color: #e6afa2 !important; /* Use your primary color */
-        }
-        /* Ensure video plays behind text */
-        video {
-          z-index: -1;
-        }
-      `}</style>
+      {/* --- STYLE BLOCK REMOVED to fix hydration error --- */}
     </div>
   );
 }
