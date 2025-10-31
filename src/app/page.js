@@ -6,6 +6,7 @@ import ProductCategories from "../components/ProductCategories";
 import WhyChooseUs from "../components/WhyChooseUs";
 import FeaturedProducts from "../components/FeaturedProducts";
 import CallToAction from "../components/CallToAction";
+import BlogSection from "@/components/BlogSection";
 
 export default function Home() {
   return (
@@ -17,6 +18,7 @@ export default function Home() {
       <WhyChooseUs />
       <FeaturedProducts />
       <CallToAction />
+      <BlogSection />
       {/* Home page sections are complete! */}
     </>
   );
