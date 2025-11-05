@@ -1,3 +1,4 @@
+// components/BlogCard.js
 import React from "react";
 import Link from "next/link";
 import Image from "next/image";
@@ -32,8 +33,8 @@ export default function BlogCard({ blog }) {
         <Image
           src={blog.image || "/images/Category-Card.png"} // Use default placeholder
           alt={blog.name}
-          width={400}
-          height={224}
+          fill // replaces layout="fill"
+          style={{ objectFit: "cover" }} // replaces objectFit
           className="w-full h-full object-cover transform transition-transform duration-500 group-hover:scale-105"
         />
       </Link>

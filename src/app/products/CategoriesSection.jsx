@@ -2,32 +2,26 @@
 
 import { motion } from "framer-motion";
 import CategoryCard from "@/components/CategoryCard";
+import FeaturedProducts from "@/components/FeaturedProducts";
+import DividerSection from "@/components/DividerSection";
+import PageBanner from "@/components/PageBanner";
+import CallToAction from "@/components/CallToAction";
 
-export default function CategoriesSection({ categories }) {
+export default function CategoriesSection({ categories, categoryName }) {
+  const breadcrumbs = [
+    { name: "Home", href: "/" },
+    { name: "Products", href: "" },
+  ];
+
   return (
     <div>
       {/* Banner */}
-      <section className="relative py-24 md:py-32 bg-gradient-to-t from-gray-100 to-white">
-        <div className="container mx-auto px-4 text-center">
-          <motion.h1
-            className="text-4xl md:text-5xl font-bold text-gray-800 mb-4"
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-          >
-            Our Product Categories
-          </motion.h1>
-
-          <motion.p
-            className="text-lg text-gray-600 max-w-2xl mx-auto"
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.2 }}
-          >
-            Discover the diverse range of premium Himalayan salt products.
-          </motion.p>
-        </div>
-      </section>
+      <PageBanner
+        title="Our Product Categories"
+        subtitle="Browse our complete collection of Himalayan salt products, available for wholesale and private label."
+        breadcrumbs={breadcrumbs}
+        imageUrl="/images/himalayan-salt-bg.jpg"
+      />
 
       {/* Grid */}
       <section className="py-16 lg:py-24 bg-gray-100">
@@ -49,6 +43,10 @@ export default function CategoriesSection({ categories }) {
           )}
         </div>
       </section>
+      <DividerSection />
+
+      <FeaturedProducts />
+      <CallToAction />
     </div>
   );
 }

@@ -5,6 +5,11 @@ import Image from "next/image";
 import { notFound } from "next/navigation";
 import allProducts from "@/data/products.json";
 import { Check, Shield } from "lucide-react";
+import PageBanner from "@/components/PageBanner";
+import FeaturedProducts from "@/components/FeaturedProducts";
+import DividerSection from "@/components/DividerSection";
+import ProductCategories from "@/components/ProductCategories";
+import CallToAction from "@/components/CallToAction";
 
 // This function tells Next.js to pre-build all product pages
 export async function generateStaticParams() {
@@ -45,34 +50,39 @@ export default async function ProductPage({ params }) {
     notFound();
   }
 
+  // Get category and index in allProducts
+  const categoryProducts = allProducts.filter(
+    (p) => p.category === product.category
+  );
+  const currentIndex = categoryProducts.findIndex((p) => p.id === product.id);
+
+  const prevProduct =
+    currentIndex > 0 ? categoryProducts[currentIndex - 1] : null;
+  const nextProduct =
+    currentIndex < categoryProducts.length - 1
+      ? categoryProducts[currentIndex + 1]
+      : null;
+
   // Helper for category name
   const categoryName = product.category
     .replace(/-/g, " ")
     .replace(/\b\w/g, (l) => l.toUpperCase());
 
+  const breadcrumbs = [
+    { name: "Home", href: "/" },
+    { name: "Products", href: "/products" },
+    { name: categoryName, href: "" }, // Current page, no link
+  ];
+
   return (
     <div className="bg-white">
-      {/* 1. Breadcrumb Bar */}
-      <div className="bg-gray-100 py-4">
-        <div className="container mx-auto px-4 text-sm text-gray-600">
-          <Link href="/" className="hover:text-primary">
-            Home
-          </Link>
-          {" / "}
-          <Link href="/products" className="hover:text-primary">
-            Products
-          </Link>
-          {" / "}
-          <Link
-            href={`/products/${product.category}`}
-            className="hover:text-primary"
-          >
-            {categoryName}
-          </Link>
-          {" / "}
-          <span className="text-gray-800 font-medium">{product.name}</span>
-        </div>
-      </div>
+      {/* 1. Banner Section */}
+      <PageBanner
+        title={categoryName}
+        subtitle={`Browse our complete collection of ${categoryName} products, available for wholesale and private label.`}
+        breadcrumbs={breadcrumbs}
+        imageUrl="/images/himalayan-salt-bg.jpg"
+      />
 
       {/* 2. Main Product Section */}
       <section className="py-12 md:py-20">
@@ -133,20 +143,40 @@ export default async function ProductPage({ params }) {
               </div>
             </div>
           </div>
+
+          {/* 🔹 Product Navigation Arrows */}
+          <div className="flex justify-between items-center mt-12 border-t border-gray-200 pt-6 text-gray-700">
+  {prevProduct ? (
+    <Link
+      href={`/products/${prevProduct.category}/${prevProduct.id}`}
+      scroll={false}   // 👈 Prevents jumping to top
+      className="flex items-center text-primary hover:underline"
+    >
+      <span className="mr-2">←</span> {prevProduct.name}
+    </Link>
+  ) : (
+    <span />
+  )}
+
+  {nextProduct ? (
+    <Link
+      href={`/products/${nextProduct.category}/${nextProduct.id}`}
+      scroll={false}   // 👈 Prevents jumping to top
+      className="flex items-center text-primary hover:underline"
+    >
+      {nextProduct.name} <span className="ml-2">→</span>
+    </Link>
+  ) : (
+    <span />
+  )}
+</div>
+
         </div>
       </section>
 
-      {/* 3. Related Products Section (Placeholder) */}
-      <section className="py-16 lg:py-24 bg-gray-100">
-        <div className="container mx-auto px-4">
-          <h2 className="text-3xl font-bold text-center mb-12">
-            Related Products
-          </h2>
-          <p className="text-center text-gray-600">
-            (Product Carousel will go here)
-          </p>
-        </div>
-      </section>
+      {/* <DividerSection /> */}
+      {/* <FeaturedProducts /> */}
+      {/* <CallToAction/> */}
     </div>
   );
 }

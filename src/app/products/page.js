@@ -9,6 +9,7 @@ export const metadata = {
 
 // Extract unique categories
 const getCategoriesFromProducts = (products) => {
+  
   const categoryMap = new Map();
   if (!Array.isArray(products)) return [];
 
@@ -25,7 +26,7 @@ const getCategoriesFromProducts = (products) => {
           /-/g,
           " "
         )} products.`,
-        image: `/images/Category-Card.png`,
+        image: product.image || `/images/Category-Card.png`,
       });
     }
   });
@@ -33,8 +34,9 @@ const getCategoriesFromProducts = (products) => {
   return Array.from(categoryMap.values());
 };
 
-export default function ProductsPage() {
+export default function ProductsPage({ params }) {
   const categories = getCategoriesFromProducts(allProducts);
+  const categoryName = params.slug;
 
-  return <CategoriesSection categories={categories} />;
+  return <CategoriesSection categories={categories}  categoryName={categoryName} />;
 }

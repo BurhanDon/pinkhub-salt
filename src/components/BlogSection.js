@@ -1,3 +1,5 @@
+// components/BlogSection.js
+
 "use client"; // For framer-motion animations
 
 import React from "react";
@@ -46,7 +48,7 @@ export default function BlogSection() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {recentBlogs.map((blog, index) => (
             <motion.div
-              key={blog.id}
+              key={blog.id || index}
               variants={cardVariants}
               initial="hidden"
               whileInView="visible"

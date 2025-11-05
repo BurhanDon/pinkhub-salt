@@ -11,7 +11,25 @@
 /* Global Swiper Styles for HeroSlider and FeaturedProducts */
 .swiper-button-next,
 .swiper-button-prev {
-  color: #e6afa2 !important; /* Your 'primary' color */
+  color: #926257 !important; /* darker color */
+  font-weight: 700;
+  text-shadow: 0 0 4px rgba(255, 255, 255, 0.7); /* optional for better contrast */
+  transition: color 0.3s ease;
+  transform: translateY(-10%); /* centers them a bit better vertically */
+  z-index: 10;
+}
+
+.swiper-button-next {
+  right: -25px !important; /* move arrow slightly outside slider */
+}
+
+.swiper-button-prev {
+  left: -25px !important;
+}
+
+.swiper-button-next:hover,
+.swiper-button-prev:hover {
+  color: #000 !important;
 }
 
 .swiper-pagination-bullet-active {
@@ -20,8 +38,13 @@
 
 /* Fix for FeaturedProducts pagination dots */
 .swiper-pagination {
-  bottom: 10px !important; /* Pushes dots down */
+  bottom: 0px !important; /* keep close but visible */
+  padding-top: 25px; /* ensures dots have breathing room from cards */
 }
+
+/* .swiper {
+  overflow: visible !important;
+} */
 
 /* Position FeaturedProducts buttons */
 .swiper-button-next {
