@@ -27,14 +27,17 @@ export default function Home() {
     <>
       <HeroSlider />
       <WelcomeSnippet />
-      <ImageGallery images={images} />
       <DividerSection />
+      <ImageGallery images={images} />
       <ProductCategories />
+      <DividerSection />
       <WhyChooseUs />
       <FeaturedProducts />
+      <DividerSection />
       <CallToAction />
       <BlogSection />
       <ContactPage/>
+      <DividerSection />
       {/* Home page sections are complete! */}
     </>
   );
