@@ -38,46 +38,46 @@ export const categories = [
       },
     ],
   },
-  {
-    id: "salt-lamps-decor",
-    title: "Salt Lamps & Decor",
-    description:
-      "Handcrafted lamps and decor items to purify air and enhance ambiance.",
-    image: "/images/Category-Card.png",
-    products: [
-      {
-        id: "natural-salt-lamp-medium",
-        name: "Natural Shape Salt Lamp (Medium 2-3kg)",
-        description:
-          "Unique, natural shape lamp providing a warm, ambient glow.",
-        image: "/images/Category-Card.png",
-        featured: true,
-      },
-      {
-        id: "usb-salt-lamp-pyramid",
-        name: "USB Salt Lamp (Pyramid Shape)",
-        description: "Compact pyramid lamp powered by USB, perfect for desks.",
-        image: "/images/Category-Card.png",
-        featured: true,
-      },
-      {
-        id: "salt-candle-holder-natural",
-        name: "Natural Salt Tealight Holder",
-        description:
-          "Adds a warm, natural glow to any space with a tealight candle.",
-        image: "/images/Category-Card.png",
-        featured: true,
-      },
-      {
-        id: "fire-bowl-lamp",
-        name: "Salt Crystal Fire Bowl Lamp",
-        description:
-          "Chunks of salt crystals in a bowl, illuminated from below.",
-        image: "/images/Category-Card.png",
-        featured: true,
-      },
-    ],
-  },
+  // {
+  //   id: "salt-lamps-decor",
+  //   title: "Salt Lamps & Decor",
+  //   description:
+  //     "Handcrafted lamps and decor items to purify air and enhance ambiance.",
+  //   image: "/images/Category-Card.png",
+  //   products: [
+  //     {
+  //       id: "natural-salt-lamp-medium",
+  //       name: "Natural Shape Salt Lamp (Medium 2-3kg)",
+  //       description:
+  //         "Unique, natural shape lamp providing a warm, ambient glow.",
+  //       image: "/images/Category-Card.png",
+  //       featured: true,
+  //     },
+  //     {
+  //       id: "usb-salt-lamp-pyramid",
+  //       name: "USB Salt Lamp (Pyramid Shape)",
+  //       description: "Compact pyramid lamp powered by USB, perfect for desks.",
+  //       image: "/images/Category-Card.png",
+  //       featured: true,
+  //     },
+  //     {
+  //       id: "salt-candle-holder-natural",
+  //       name: "Natural Salt Tealight Holder",
+  //       description:
+  //         "Adds a warm, natural glow to any space with a tealight candle.",
+  //       image: "/images/Category-Card.png",
+  //       featured: true,
+  //     },
+  //     {
+  //       id: "fire-bowl-lamp",
+  //       name: "Salt Crystal Fire Bowl Lamp",
+  //       description:
+  //         "Chunks of salt crystals in a bowl, illuminated from below.",
+  //       image: "/images/Category-Card.png",
+  //       featured: true,
+  //     },
+  //   ],
+  // },
   {
     id: "health-wellness",
     title: "Health & Wellness",
