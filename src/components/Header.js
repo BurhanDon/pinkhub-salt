@@ -22,7 +22,7 @@ export default function Header() {
     { href: "/about", label: "About Us" },
     { href: "/products", label: "Products" },
     { href: "/private-label", label: "Private Label" },
-    { href: "/certifications", label: "Certifications" },
+    { href: "/faq", label: "FAQ" },
     { href: "/contact", label: "Contact Us" },
   ];
 
@@ -38,21 +38,29 @@ export default function Header() {
       <div className="bg-gray-100 text-gray-700 text-xs py-2 border-b border-gray-200">
         <div className="container mx-auto px-4 flex flex-col sm:flex-row justify-between items-center">
           <div className="flex flex-col sm:flex-row gap-x-4 gap-y-1 mb-1 sm:mb-0">
+            {/* Updated WhatsApp link */}
             <a
-              href="tel:+923000000000"
+              href="https://wa.me/+923211117621"
               className="flex items-center gap-1 hover:text-primary transition-colors"
+              target="_blank"
+              rel="noopener noreferrer"
             >
               <Phone size={14} />
-              <span>+92 300 0000000</span>
+              <span>+92 321 1117621</span>
             </a>
+
+            {/* Updated Email link */}
             <a
-              href="mailto:sales@raqeebsalt.com"
+              href="mailto:raqeebsiraj12345@gmail.com"
               className="flex items-center gap-1 hover:text-primary transition-colors"
+              target="_blank"
+              rel="noopener noreferrer"
             >
               <Mail size={14} />
-              <span>sales@raqeebsalt.com</span>
+              <span>raqeebsiraj12345@gmail.com</span>
             </a>
           </div>
+
           <div className="flex gap-3">
             {socialLinks.map((social, index) => (
               <a

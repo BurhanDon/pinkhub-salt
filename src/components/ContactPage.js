@@ -86,12 +86,13 @@ export default function ContactPage() {
       {/* 2. Main Contact Section */}
       <section className="py-16 lg:py-24">
         <div className="container mx-auto px-4">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-stretch">
             {/* Column 1: Contact Info */}
             <motion.div
               initial={{ opacity: 0, x: -50 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.7 }}
+              className="flex flex-col justify-center h-full"
             >
               <h2 className="text-3xl font-bold text-gray-900 mb-6">
                 Get In Touch
@@ -103,7 +104,13 @@ export default function ContactPage() {
               </p>
 
               <div className="space-y-6">
-                <a href="tel:+923000000000" className="flex items-start group">
+                {/* Updated Phone link with WhatsApp */}
+                <a
+                  href="https://wa.me/+923211117621"
+                  className="flex items-start group"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
                   <div className="bg-primary/10 p-3 rounded-full mr-4">
                     <Phone className="h-6 w-6 text-primary" />
                   </div>
@@ -111,12 +118,16 @@ export default function ContactPage() {
                     <h3 className="text-lg font-semibold text-gray-800 group-hover:text-primary transition-colors">
                       Call Us
                     </h3>
-                    <p className="text-gray-600">+92 318 2677471</p>
+                    <p className="text-gray-600">+92 321 1117621</p>
                   </div>
                 </a>
+
+                {/* Updated Email link */}
                 <a
-                  href="mailto:bu61796@gmail.com"
+                  href="mailto:raqeebsiraj12345@gmail.com"
                   className="flex items-start group"
+                  target="_blank"
+                  rel="noopener noreferrer"
                 >
                   <div className="bg-primary/10 p-3 rounded-full mr-4">
                     <Mail className="h-6 w-6 text-primary" />
@@ -125,9 +136,11 @@ export default function ContactPage() {
                     <h3 className="text-lg font-semibold text-gray-800 group-hover:text-primary transition-colors">
                       Email Us
                     </h3>
-                    <p className="text-gray-600">bu61796@gmail.com</p>
+                    <p className="text-gray-600">raqeebsiraj12345@gmail.com</p>
                   </div>
                 </a>
+
+                {/* Updated Location */}
                 <div className="flex items-start">
                   <div className="bg-primary/10 p-3 rounded-full mr-4">
                     <MapPin className="h-6 w-6 text-primary" />
@@ -137,7 +150,8 @@ export default function ContactPage() {
                       Our Location
                     </h3>
                     <p className="text-gray-600">
-                      123 Salt Street, Karachi, Pakistan
+                      V37G+F85, Shahra-e-Faisal, Karachi Memon Co-operative
+                      Housing Society Umar Colony, Karachi, Pakistan
                     </p>
                   </div>
                 </div>

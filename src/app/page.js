@@ -10,7 +10,9 @@ import FeaturedProducts from "../components/FeaturedProducts";
 import CallToAction from "../components/CallToAction";
 import BlogSection from "@/components/BlogSection";
 import ImageGallery from "@/components/ImageGallery";
+import WhatsAppButton from "@/components/WhatsAppButton";
 import ContactPage from "@/components/ContactPage";
+import PrivateLabel from "@/components/PrivateLabel";
 
 export default function Home() {
   // 🔹 Read files in /public/images/gallery
@@ -26,18 +28,20 @@ export default function Home() {
   return (
     <>
       <HeroSlider />
-      <WelcomeSnippet />
+      <WelcomeSnippet showButton={true}/>
       <DividerSection />
       <ImageGallery images={images} />
       <ProductCategories />
       <DividerSection />
       <WhyChooseUs />
       <FeaturedProducts />
+      <PrivateLabel imagePosition="left" /> {/* Or "right" */}
       <DividerSection />
       <CallToAction />
       <BlogSection />
-      <ContactPage/>
+      <ContactPage />
       <DividerSection />
+      <WhatsAppButton />
       {/* Home page sections are complete! */}
     </>
   );

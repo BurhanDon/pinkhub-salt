@@ -5,7 +5,7 @@ import Link from "next/link"; // Standard Next.js Link import
 import Image from "next/image"; // Standard Next.js Image import
 import { motion } from "framer-motion";
 
-const WelcomeSnippet = () => {
+const WelcomeSnippet = ({ showButton = true }) => {
   // Animation variants for text elements
   const textVariants = {
     hidden: { opacity: 0, y: 20 },
@@ -88,12 +88,22 @@ const WelcomeSnippet = () => {
               transition={{ delay: 0.5 }}
               viewport={{ once: true }}
             >
-              <Link
-                href="/about"
-                className="inline-block bg-primary text-white px-7 py-3 rounded-full font-semibold hover:opacity-90 hover:scale-105 hover:brightness-110 transform transition-all duration-300 shadow-md hover:shadow-lg"
-              >
-                Learn More About Us
-              </Link>
+              {showButton && (
+                <motion.div
+                  variants={textVariants}
+                  initial="hidden"
+                  whileInView="visible"
+                  transition={{ delay: 0.5 }}
+                  viewport={{ once: true }}
+                >
+                  <Link
+                    href="/about"
+                    className="inline-block bg-primary text-white px-7 py-3 rounded-full font-semibold hover:opacity-90 hover:scale-105 hover:brightness-110 transform transition-all duration-300 shadow-md hover:shadow-lg"
+                  >
+                    Learn More About Us
+                  </Link>
+                </motion.div>
+              )}
             </motion.div>
           </div>
 

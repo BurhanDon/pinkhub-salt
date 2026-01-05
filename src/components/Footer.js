@@ -14,7 +14,7 @@ const Footer = () => {
     { href: "/about", label: "About Us" },
     { href: "/products", label: "Products" },
     { href: "/private-label", label: "Private Label" },
-    { href: "/certifications", label: "Certifications" },
+    // { href: "/certifications", label: "Certifications" },
     { href: "/contact", label: "Contact Us" },
     { href: "/faq", label: "FAQ" }, // Added FAQ
   ];
@@ -22,9 +22,9 @@ const Footer = () => {
   // We'll replace these with actual categories later
   const productLinks = [
     { href: "/products/edible-salt", label: "Edible Salt" },
-    { href: "/products/salt-lamps-decor", label: "Salt Lamps & Decor" },
+    { href: "/products/home-decor", label: "Home Decor" },
     { href: "/products/health-wellness", label: "Health & Wellness" },
-    { href: "/products/kitchenware", label: "Kitchenware" },
+    { href: "/products/kitchen-product", label: "Kitchenware" },
     { href: "/products/animal-lick-salt", label: "Animal Lick Salt" },
     { href: "/products/industrial-salt", label: "Industrial Salt" },
   ];
@@ -115,25 +115,31 @@ const Footer = () => {
                   size={16}
                   className="mr-2 mt-1 text-primary flex-shrink-0"
                 />
-                <span>123 Salt Street, Karachi, Pakistan</span>{" "}
-                {/* Replace with actual address */}
+                <span>
+                  V37G+F85, Shahra-e-Faisal, Karachi Memon Co-operative Housing
+                  Society Umar Colony, Karachi, Pakistan
+                </span>
               </li>
               <li className="flex items-center">
                 <Phone size={16} className="mr-2 text-primary flex-shrink-0" />
                 <a
-                  href="tel:+923000000000"
+                  href="https://wa.me/+923211117621"
                   className="hover:text-primary transition-colors"
+                  target="_blank"
+                  rel="noopener noreferrer"
                 >
-                  +92 300 0000000
+                  +92 321 1117621
                 </a>
               </li>
               <li className="flex items-center">
                 <Mail size={16} className="mr-2 text-primary flex-shrink-0" />
                 <a
-                  href="mailto:sales@raqeebsalt.com"
+                  href="mailto:raqeebsiraj12345@gmail.com"
                   className="hover:text-primary transition-colors break-all"
+                  target="_blank"
+                  rel="noopener noreferrer"
                 >
-                  sales@raqeebsalt.com
+                  raqeebsiraj12345@gmail.com
                 </a>
               </li>
             </ul>

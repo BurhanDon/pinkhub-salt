@@ -30,7 +30,8 @@ export default function ImageGallery({ images = [] }) {
           </h2>
           <span className="block w-16 h-1 bg-primary mx-auto mb-4"></span>
           <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-            A glimpse into our state-of-the-art facility and our passion for pure Himalayan salt.
+            A glimpse into our state-of-the-art facility and our passion for
+            pure Himalayan salt.
           </p>
         </motion.div>
 
