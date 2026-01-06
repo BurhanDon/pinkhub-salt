@@ -1,7 +1,7 @@
 import React from "react";
 import PageBanner from "@/components/PageBanner";
 import FAQSection from "@/components/FAQSection";
-import ContactPage from "@/components/ContactPage";
+import ContactPage from "@/components/ContactUs";
 import DividerSection from "@/components/DividerSection";
 
 export const metadata = {

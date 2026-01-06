@@ -1,8 +1,6 @@
 import React from "react";
 import PageBanner from "@/components/PageBanner";
-import ContactUs from "@/components/ContactPage";
-import CallToAction from "@/components/CallToAction";
-import DividerSection from "@/components/DividerSection";
+import ContactUs from "@/components/ContactUs";
 
 export const metadata = {
   title: "Contact Us | Raqeeb Salt",
@@ -26,8 +24,6 @@ export default function ContactPage() {
       />
 
       <ContactUs />
-      {/* <CallToAction />
-      <DividerSection /> */}
     </div>
   );
 }

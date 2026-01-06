@@ -11,7 +11,7 @@ import CallToAction from "../components/CallToAction";
 import BlogSection from "@/components/BlogSection";
 import ImageGallery from "@/components/ImageGallery";
 import WhatsAppButton from "@/components/WhatsAppButton";
-import ContactPage from "@/components/ContactPage";
+import ContactPage from "@/components/ContactUs";
 import PrivateLabel from "@/components/PrivateLabel";
 
 export default function Home() {
