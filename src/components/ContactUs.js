@@ -146,6 +146,9 @@ export default function ContactUs() {
             transition={{ duration: 0.7 }}
           >
             <form
+              name="contact v1"
+              method="post"
+              data-netlify="true"
               onSubmit={handleSubmit}
               className="bg-gray-50 p-6 sm:p-8 rounded-lg shadow-lg"
             >
