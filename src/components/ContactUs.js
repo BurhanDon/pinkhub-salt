@@ -146,6 +146,7 @@ export default function ContactUs() {
             transition={{ duration: 0.7 }}
           >
             <form
+              netlify
               name="contact"
               method="post"
               data-netlify="true"
