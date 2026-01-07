@@ -31,8 +31,8 @@ export default function ContactUs() {
   };
 
   const handleSubmit = async (e) => {
-    // e.preventDefault();
-    // setStatus("loading");
+    e.preventDefault();
+    setStatus("loading");
 
     try {
       // 1. URLSearchParams automatically encodes the data correctly
