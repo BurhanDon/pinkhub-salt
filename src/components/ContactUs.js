@@ -82,7 +82,7 @@ export default function ContactUs() {
             className="flex flex-col justify-center h-full"
           >
             <h2 className="text-3xl font-bold text-gray-900 mb-6">
-              Contact Testing
+              Get In Touch
             </h2>
             <p className="text-gray-600 mb-8 leading-relaxed">
               Whether you have a question about our products, need a wholesale
