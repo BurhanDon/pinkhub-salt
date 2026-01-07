@@ -146,7 +146,7 @@ export default function ContactUs() {
             transition={{ duration: 0.7 }}
           >
             <form
-              name="contact v1"
+              name="contact"
               method="post"
               data-netlify="true"
               onSubmit={handleSubmit}
@@ -155,6 +155,7 @@ export default function ContactUs() {
               {/* Note: We do NOT need hidden inputs here because we append "form-name" in the JS handler */}
 
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                <input name="contact" value="contact" type="hidden"/>
                 <div>
                   <label
                     htmlFor="name"
