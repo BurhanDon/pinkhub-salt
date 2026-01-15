@@ -28,7 +28,7 @@ export default function Home() {
   return (
     <>
       <HeroSlider />
-      <WelcomeSnippet showButton={true}/>
+      <WelcomeSnippet showButton={true} />
       <DividerSection />
       <ImageGallery images={images} />
       <ProductCategories />

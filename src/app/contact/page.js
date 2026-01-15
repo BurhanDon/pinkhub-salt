@@ -20,7 +20,7 @@ export default function ContactPage() {
         title="Contact Us"
         subtitle="We're here to help. Send us a message for wholesale quotes, private labeling, or general inquiries."
         breadcrumbs={breadcrumbs}
-        imageUrl="/images/himalayan-salt-bg.jpg" // Or remove to use default
+        imageUrl="/images/himalayan-salt-bg.jpg"
       />
 
       <ContactUs />

@@ -10,6 +10,7 @@ import {
   CheckCircle,
   AlertTriangle,
 } from "lucide-react";
+import emailjs from "@emailjs/browser";
 
 export default function ContactUs() {
   const [formData, setFormData] = useState({
@@ -34,38 +35,34 @@ export default function ContactUs() {
     e.preventDefault();
     setStatus("loading");
 
+    // Service ID, Template ID, and Public Key from your env variables
+    const serviceId = process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID;
+    const templateId = process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID;
+    const publicKey = process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY;
+
+    // Create a template parameters object that matches your EmailJS template variables
+    // Ensure your EmailJS template uses {{name}}, {{email}}, {{phone}}, {{subject}}, {{message}}
+    const templateParams = {
+      name: formData.name,
+      email: formData.email,
+      phone: formData.phone,
+      subject: formData.subject,
+      message: formData.message,
+    };
+
     try {
-      // 1. URLSearchParams automatically encodes the data correctly
-      const data = new URLSearchParams();
-      data.append("form-name", "contact"); // MUST match the name in public/form.html
+      await emailjs.send(serviceId, templateId, templateParams, publicKey);
 
-      // Append all state fields
-      Object.entries(formData).forEach(([key, value]) => {
-        data.append(key, value);
+      setStatus("success");
+      setFormData({
+        name: "",
+        email: "",
+        phone: "",
+        subject: "",
+        message: "",
       });
-
-      // 2. Submit to the root "/"
-      const response = await fetch("/", {
-        method: "POST",
-        headers: { "Content-Type": "application/x-www-form-urlencoded" },
-        body: data.toString(),
-      });
-
-      if (response.ok) {
-        setStatus("success");
-        setFormData({
-          name: "",
-          email: "",
-          phone: "",
-          subject: "",
-          message: "",
-        });
-      } else {
-        console.error("Netlify Server Error:", response);
-        setStatus("error");
-      }
     } catch (error) {
-      console.error("Network Error:", error);
+      console.error("EmailJS Error:", error);
       setStatus("error");
     }
   };
@@ -92,7 +89,7 @@ export default function ContactUs() {
 
             <div className="space-y-6">
               <a
-                href="https://wa.me/923211117621"
+                href="https://wa.me/923000000000"
                 className="flex items-start group"
                 target="_blank"
                 rel="noopener noreferrer"
@@ -104,15 +101,13 @@ export default function ContactUs() {
                   <h3 className="text-lg font-semibold text-gray-800 group-hover:text-primary transition-colors">
                     Call Us
                   </h3>
-                  <p className="text-gray-600">+92 321 1117621</p>
+                  <p className="text-gray-600">+92 300 0000000</p>
                 </div>
               </a>
 
               <a
-                href="mailto:raqeebsiraj12345@gmail.com"
+                href="mailto:sales@raqeebsalt.com"
                 className="flex items-start group"
-                target="_blank"
-                rel="noopener noreferrer"
               >
                 <div className="bg-primary/10 p-3 rounded-full mr-4">
                   <Mail className="h-6 w-6 text-primary" />
@@ -121,7 +116,7 @@ export default function ContactUs() {
                   <h3 className="text-lg font-semibold text-gray-800 group-hover:text-primary transition-colors">
                     Email Us
                   </h3>
-                  <p className="text-gray-600">raqeebsiraj12345@gmail.com</p>
+                  <p className="text-gray-600">sales@raqeebsalt.com</p>
                 </div>
               </a>
 
@@ -148,15 +143,9 @@ export default function ContactUs() {
             transition={{ duration: 0.7 }}
           >
             <form
-              netlify
-              name="contact"
-              method="post"
-              data-netlify="true"
               onSubmit={handleSubmit}
               className="bg-gray-50 p-6 sm:p-8 rounded-lg shadow-lg"
             >
-              {/* Note: We do NOT need hidden inputs here because we append "form-name" in the JS handler */}
-
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
                 <div>
                   <label
@@ -267,13 +256,13 @@ export default function ContactUs() {
               {status === "success" && (
                 <div className="mt-4 flex items-center text-green-600 bg-green-50 p-3 rounded">
                   <CheckCircle className="h-5 w-5 mr-2" />
-                  <p>Thank you! Your message has been sent.</p>
+                  <p>Thank you! Your message has been sent successfully.</p>
                 </div>
               )}
               {status === "error" && (
                 <div className="mt-4 flex items-center text-red-600 bg-red-50 p-3 rounded">
                   <AlertTriangle className="h-5 w-5 mr-2" />
-                  <p>Something went wrong. Please refresh and try again.</p>
+                  <p>Failed to send message. Please check your connection.</p>
                 </div>
               )}
             </form>
